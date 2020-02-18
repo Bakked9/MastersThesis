@@ -1,2 +1,2 @@
 # MastersThesis
-Classification and Monitoring Informal Settlements using Open Data
+Integrating Openstreetmap Data and Sentinel-2 Imagery for Classifying and Monitoring Informal Settlements
