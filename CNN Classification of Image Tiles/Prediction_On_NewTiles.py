@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Feb 14 21:26:05 2020
-
-@author: BRENDA
-"""
 
 import numpy as np
 import pandas as pd
@@ -11,11 +6,11 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.models import load_model
 
 # Load model
-model = load_model('C:/Users/BRENDA/Desktop/THESIS/CODE/finalCNN_model.h5')
+model = load_model('path to model.h5')
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 test_generator = test_datagen.flow_from_directory(
-        "C:/Users/BRENDA/Desktop/THESIS/FINAL_DATASET/Test16/",
+        "path to Folder with images to Predict",
         target_size=(255, 255),
         batch_size=64,
         class_mode='binary',
