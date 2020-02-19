@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Feb  5 22:02:43 2020
-
-@author: BRENDA
-"""
 
 import os
 # Function to rename multiple files
 def main():
    i = 0
-   path='C:/Users/BRENDA/Desktop/THESIS\Dataz/Informal/'
+   path='...../Informal/'#path to Folder with Informal Image Tiles
    for filename in os.listdir(path):
       my_dest ="Informal." + str(i) + ".tif"
       my_source =path + filename
@@ -22,3 +17,5 @@ def main():
 if __name__ == '__main__':
    # Calling main() function
    main()
+   
+   #Source: https://www.tutorialspoint.com/rename-multiple-files-using-python
