@@ -1,8 +1,8 @@
 import os, sys, arcpy
 
-AOI     = "C:\\Users\\BRENDA\\Desktop\\THESIS\\DATA\\SENTINEL\\Polygons.shp"  # the area of interest to find the rasters for
-rFolder = "D:\\Tiles_2019" # the folder containing the rasters to search from
-InformalFolder = "D:\\Testing\\Informal" # the folder to copy to
+AOI     = "Path to Training Sample Polygon.shp"  # Polygons with area of interest that overlap with image tiles
+InFolder = "Path" # the folder containing the rasters to search from
+OutFolder = "Path" # the folder to copy to
 
 arcpy.env.overwriteOutput =True
 #Get the extent of each polygon feature individually from AOI, in a list
@@ -12,7 +12,7 @@ for row in cursor:
     ext_row = row.getValue('Shape').extent  #NOTE:Geometry field name must match shapefile table   
     listExt.append(ext_row)
 del cursor
-arcpy.env.workspace = rFolder
+arcpy.env.workspace = InFolder
 
 for ThisRas in arcpy.ListRasters():
     rDesc = arcpy.Describe(ThisRas)
@@ -24,5 +24,5 @@ for ThisRas in arcpy.ListRasters():
             arcpy.AddMessage("Raster %s is outside" % (ThisRas))
         else:
             arcpy.AddMessage("Raster %s overlaps" % (ThisRas))
-            outFile = os.path.join(InformalFolder,ThisRas)
-            arcpy.Copy_management(os.path.join(rFolder,ThisRas),outFile)
+            outFile = os.path.join(OutFolder,ThisRas)
+            arcpy.Copy_management(os.path.join(InFolder,ThisRas),outFile)
