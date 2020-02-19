@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 22 02:16:09 2020
-
-@author: BRENDA
-"""
 
 import pydot
 import pandas as pd
@@ -36,7 +31,7 @@ from keras.wrappers.scikit_learn import KerasClassifier
 
 from IPython.display import display
 
-#Some useful functions we'll use in this notebook
+#Plotting Display Functions
 def display_confusion_matrix(target, prediction, score=None):
     cm = metrics.confusion_matrix(target, prediction)
     plt.figure(figsize=(6,6))
@@ -51,7 +46,7 @@ def display_confusion_matrix(target, prediction, score=None):
   
 
 # Importing the dataset
-dataset = pd.read_csv('BT.csv')
+dataset = pd.read_csv('path to training csv dataset')
 X = dataset.drop(['OBJECTID', 'Cluster'], axis=1)
 y = dataset['Cluster']
 
@@ -119,7 +114,7 @@ print(confusion_matrix(y_test,rf_prediction))
 print(classification_report(y_test,rf_prediction))
 
 
-
+############# Multilayer Perceprton (ANN)
 def build_ann(optimizer='adam'):
     
     # Initializing our ANN
