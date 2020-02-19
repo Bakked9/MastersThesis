@@ -1,23 +1,18 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Feb 14 08:28:35 2020
-
-@author: BRENDA
-"""
 
 # organize dataset into a useful structure
 from os import makedirs
 from os import listdir
 from shutil import copyfile
 # create directories
-dataset_home = 'C:/Users/BRENDA/Desktop/CNN_FINAL/'
+dataset_home = 'Path to New Directory/'
 # create label subdirectories
 labeldirs = ['Formal/', 'Informal/']
 for labldir in labeldirs:
 	newdir = dataset_home + labldir
 	makedirs(newdir, exist_ok=True)
 # copy training dataset images into subdirectories
-src_directory = 'C:/Users/BRENDA/Desktop/THESIS/Dataz/Training'
+src_directory = 'Path to Training Dataset/'
 for file in listdir(src_directory):
 	src = src_directory + '/' + file
 	if file.startswith('Formal'):
@@ -30,7 +25,7 @@ for file in listdir(src_directory):
        
 
 
-###########PART 6 data augmentation ############
+###########Three Block VGG Model + data augmentation ############
 import sys
 from matplotlib import pyplot
 from keras.utils import to_categorical
@@ -69,12 +64,12 @@ def run_test_harness():
 		width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)
 	test_datagen = ImageDataGenerator(rescale=1.0/255.0)
 	# prepare iterators
-	train_it = train_datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN_FINAL/',
+	train_it = train_datagen.flow_from_directory('Path to Training Dataset/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
 	# fit model
 	history = model.fit_generator(train_it, steps_per_epoch=len(train_it),epochs=50, verbose=0)
     # save model
-	model.save('C:/Users/BRENDA/Desktop/THESIS/CODE/finalCNN_model.h5')
+	model.save('......../Final_CNN_model.h5')
 
 
 # entry point, run the test harness
