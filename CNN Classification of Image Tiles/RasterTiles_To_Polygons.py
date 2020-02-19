@@ -6,7 +6,7 @@ from arcpy import env
 arcpy.CheckOutExtension("3D")
 
 # Set environment settings
-env.workspace = "D:/New folder/IMG_2019"
+env.workspace = "path to Image Tiles Folder"
 
 try:
     # Create the list of IMG rasters
@@ -31,3 +31,6 @@ except Exception as e:
     print e.message
 
 Environment
+
+
+#Source: https://desktop.arcgis.com/en/arcmap/10.3/tools/3d-analyst-toolbox/raster-domain.htm
