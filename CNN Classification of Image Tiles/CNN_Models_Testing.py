@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Feb 13 10:41:42 2020
-
-@author: BRENDA
-"""
 
 # organize dataset into a useful structure
 from os import makedirs
@@ -12,7 +7,7 @@ from shutil import copyfile
 from random import seed
 from random import random
 # create directories
-dataset_home = 'C:/Users/BRENDA/Desktop/CNN/'
+dataset_home = 'Path to Primary Directory'
 subdirs = ['train/', 'test/']
 for subdir in subdirs:
 	# create label subdirectories
@@ -29,8 +24,8 @@ val_ratio = 0.25
 
 
 
-###################PART 2####################
-# baseline model for the dogs vs cats dataset
+###################One Block VGG Model####################
+#import Libraries
 import sys
 from matplotlib import pyplot
 from keras.utils import to_categorical
@@ -79,9 +74,9 @@ def run_test_harness():
 	# create data generator
 	datagen = ImageDataGenerator(rescale=1.0/255.0)
 	# prepare iterators
-	train_it = datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/train/',
+	train_it = datagen.flow_from_directory('Path to Train Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
-	test_it = datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/test/',
+	test_it = datagen.flow_from_directory('Path to Test Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
 	# fit model
 	history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
@@ -96,20 +91,7 @@ def run_test_harness():
 run_test_harness()
 
 
-###################PART 3####################
-# baseline model for the dogs vs cats dataset
-import sys
-from matplotlib import pyplot
-from keras.utils import to_categorical
-from keras.models import Sequential
-from keras.layers import Conv2D
-from keras.layers import MaxPooling2D
-from keras.layers import Dense
-from keras.layers import Flatten
-from keras.optimizers import SGD
-from keras.preprocessing.image import ImageDataGenerator
-
-
+###################Two Block VGG Model####################
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -149,9 +131,9 @@ def run_test_harness():
 	# create data generator
 	datagen = ImageDataGenerator(rescale=1.0/255.0)
 	# prepare iterators
-	train_it = datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/train/',
+	train_it = datagen.flow_from_directory('Path to Train Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
-	test_it = datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/test/',
+	test_it = datagen.flow_from_directory('Path to Test Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
 	# fit model
 	history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
@@ -165,20 +147,7 @@ def run_test_harness():
 # entry point, run the test harness
 run_test_harness()
 
-###################PART 4####################
-# baseline model for the dogs vs cats dataset
-import sys
-from matplotlib import pyplot
-from keras.utils import to_categorical
-from keras.models import Sequential
-from keras.layers import Conv2D
-from keras.layers import MaxPooling2D
-from keras.layers import Dense
-from keras.layers import Flatten
-from keras.optimizers import SGD
-from keras.preprocessing.image import ImageDataGenerator
-
-
+###################Three Block VGG Model####################
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -220,9 +189,9 @@ def run_test_harness():
 	# create data generator
 	datagen = ImageDataGenerator(rescale=1.0/255.0)
 	# prepare iterators
-	train_it = datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/train/',
+	train_it = datagen.flow_from_directory('Path to Train Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
-	test_it = datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/test/',
+	test_it = datagen.flow_from_directory('Path to Test Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
 	# fit model
 	history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
@@ -237,20 +206,7 @@ def run_test_harness():
 run_test_harness()
 
 
-###################PART 5#################### with dropout
-# baseline model with dropout for the dogs vs cats dataset
-import sys
-from matplotlib import pyplot
-from keras.utils import to_categorical
-from keras.models import Sequential
-from keras.layers import Conv2D
-from keras.layers import MaxPooling2D
-from keras.layers import Dense
-from keras.layers import Flatten
-from keras.layers import Dropout
-from keras.optimizers import SGD
-from keras.preprocessing.image import ImageDataGenerator
-
+###################Three Block VGG Mode + Dropout#################### 
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -296,9 +252,9 @@ def run_test_harness():
 	# create data generator
 	datagen = ImageDataGenerator(rescale=1.0/255.0)
 	# prepare iterator
-	train_it = datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/train/',
+	train_it = datagen.flow_from_directory('Path to Train Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
-	test_it = datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/test/',
+	test_it = datagen.flow_from_directory('Path to Test Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
 	# fit model
 	history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
@@ -315,18 +271,7 @@ run_test_harness()
 
 
 
-###########PART 6 data augmentation ############
-import sys
-from matplotlib import pyplot
-from keras.utils import to_categorical
-from keras.models import Sequential
-from keras.layers import Conv2D
-from keras.layers import MaxPooling2D
-from keras.layers import Dense
-from keras.layers import Flatten
-from keras.optimizers import SGD
-from keras.preprocessing.image import ImageDataGenerator
-
+###########Three Block VGG Mode + Data Augmentation ############
 # define cnn model
 def define_model():
 	model = Sequential()
@@ -370,9 +315,9 @@ def run_test_harness():
 		width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)
 	test_datagen = ImageDataGenerator(rescale=1.0/255.0)
 	# prepare iterators
-	train_it = train_datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/train/',
+	train_it = train_datagen.flow_from_directory('Path to Train Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
-	test_it = test_datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/test/',
+	test_it = test_datagen.flow_from_directory('Path to Test Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
 	# fit model
 	history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
@@ -388,17 +333,9 @@ run_test_harness()
 
 
 
-##################Transfer learning#####################
-# vgg16 model used for transfer learning on the dogs and cats dataset
-import sys
-from matplotlib import pyplot
-from keras.utils import to_categorical
+##################Transfer learning with VGG-16 model #####################
+
 from keras.applications.vgg16 import VGG16
-from keras.models import Model
-from keras.layers import Dense
-from keras.layers import Flatten
-from keras.optimizers import SGD
-from keras.preprocessing.image import ImageDataGenerator
 
 # define cnn model
 def define_model(in_shape=(255, 255, 3)):
@@ -444,9 +381,9 @@ def run_test_harness():
 	# specify imagenet mean values for centering
 	datagen.mean = [123.68, 116.779, 103.939]
 	# prepare iterator
-	train_it = datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/train/',
+	train_it = datagen.flow_from_directory('Path to Train Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
-	test_it = datagen.flow_from_directory('C:/Users/BRENDA/Desktop/CNN/test/',
+	test_it = datagen.flow_from_directory('Path to Test Subdirectory/',
 		class_mode='binary', batch_size=64, target_size=(255, 255))
 	# fit model
 	history = model.fit_generator(train_it, steps_per_epoch=len(train_it),
