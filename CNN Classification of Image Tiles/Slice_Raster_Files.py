@@ -1,19 +1,15 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Feb  5 13:48:29 2020
 
-@author: BRENDA
-"""
 
 import os
 from itertools import product
 import rasterio as rio
 from rasterio import windows
 
-in_path = 'C:/Users/BRENDA/Desktop/THESIS/DATA/SENTINEL'
-input_filename = 'Map_Aug2017.tif'
+in_path = 'Path to Raster Image Folder'
+input_filename = 'Raster Image.tif'
 
-out_path = 'D:/Tiles_Aug2017'
+out_path = 'Path to Output folder to contain Image tiles'
 output_filename = 'tile_{}-{}.tif'
 
 def get_tiles(ds, width=255, height=255):
@@ -38,3 +34,5 @@ with rio.open(os.path.join(in_path, input_filename)) as inds:
         outpath = os.path.join(out_path,output_filename.format(int(window.col_off), int(window.row_off)))
         with rio.open(outpath, 'w', **meta) as outds:
             outds.write(inds.read(window=window))
+            
+#Source: https://gis.stackexchange.com/questions/285499/how-to-split-multiband-image-into-image-tiles-using-rasterio/290059#290059            
